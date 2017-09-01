@@ -1,0 +1,7 @@
+# Temporary Files
+*~
+*\#
+
+.DS_Store
+
+!.gitkeep
