@@ -1,0 +1,71 @@
+---
+title:
+author: 
+output:
+html_document:
+       toc: true
+       toc_depth: 2
+runtime: shiny
+---
+
+```{r createDocument, eval=FALSE, echo=FALSE}
+
+library(rmarkdown)
+rmarkdown::run('mainPage.Rmd') 
+
+## For deployment to shinyapps.io only!
+#library(rsconnect)
+#rsconnect::setAccountInfo(name='isabelmillan',
+#			  token='3B0EA0F35AFC75F614DFEC42207788E2',
+#			  secret='hHdbSJDT37ehrua/auRoQgWSTJhyqOdiSsTYrVFi')
+
+#rsconnect::deployApp(appDir=getwd(), appName="cluster-analysi")
+
+```
+
+
+```{r intro, echo = FALSE, eval=TRUE}
+#includeMarkdown("introduction/intro.md")
+```
+
+
+```{r graficas, echo = FALSE, eval=TRUE, message=FALSE, warning=TRUE}
+##  Gráficos de dispersión
+shinyAppDir(
+     "graficas_2/",
+     options=list(width="100%", height=700)
+   )
+```
+
+
+
+```{r fileupload, echo = FALSE, eval=TRUE, message=FALSE, warning=TRUE}
+# Cargar Datos
+source("utiles.R")
+datGlobal <- NULL # Start with NULL and set when file is uploaded
+ shinyAppDir(
+     "cargar_archivo/",
+     options=list(width="100%", height=900)
+	 )
+```
+
+
+
+ 
+```{r clustering_jerarquico, echo = FALSE, eval=TRUE, message=FALSE, warning=TRUE}
+#shinyAppDir(
+#     "clustering_jerarquico/",
+#     options=list(width="100%", height=700)
+#   )
+```
+
+
+
+```{r acknowledge, echo = FALSE, eval=TRUE}
+# Acknowledgements
+#includeMarkdown("acknowledgements/ack.md")
+```
+
+
+
+
